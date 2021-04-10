@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="timeLeft"
+            type="androidx.databinding.ObservableLong" />
+
+        <variable
+            name="correct"
+            type="androidx.databinding.ObservableInt" />
+
+        <variable
+            name="wrong"
+            type="androidx.databinding.ObservableInt" />
+
+        <variable
+            name="roundInProgress"
+            type="Boolean" />
+
+        <variable
+            name="winner"
+            type="jurasikasan.alias.Team" />
+
+        <variable
+            name="currentRound"
+            type="jurasikasan.alias.Round" />
+
+        <variable
+            name="currentTurn"
+            type="jurasikasan.alias.Round.Turn" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        tools:context=".ui.main.MainFragment">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            tools:ignore="MissingConstraints">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/teams"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/teams"
+                android:layout_gravity="top"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.valueOf((Long)timeLeft/1000)}"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sec" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/up_arrow"
+                    android:textColor="@color/colorGreen"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.valueOf((Integer)correct)}"
+                    android:textColor="@color/colorGreen"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/down_arrow"
+                    android:textColor="@color/colorRed"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.valueOf((Integer)wrong)}"
+                    android:textColor="@color/colorRed"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/equal"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.valueOf((Integer)correct-(Integer)wrong)}"
+                    android:textSize="25sp" />
+            </LinearLayout>
+
+
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:id="@+id/card_container"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_vertical"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:visibility="@{roundInProgress ? View.VISIBLE : View.GONE}">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_content_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:focusable="true"
+                    android:minHeight="250dp">
+
+                    <LinearLayout
+                        android:id="@+id/wordContainer"
+                        android:layout_width="fill_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:gravity="center_horizontal"
+                        android:minHeight="250dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:focusable="false"
+                            android:gravity="center"
+                            android:text="@string/up_arrow_x3"
+                            android:textColor="@color/colorGreen"
+                            android:textSize="25sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="85dp"
+                            android:focusable="false"
+                            android:gravity="center"
+                            android:text="@{currentTurn.word.value}"
+                            android:textSize="30sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:focusable="false"
+                            android:gravity="center"
+                            android:text="@string/down_arrow_x3"
+                            android:textColor="@color/colorRed"
+                            android:textSize="25sp" />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:orientation="vertical">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/ready"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginHorizontal="20dp"
+                    android:gravity="center"
+                    android:text="@string/ready"
+                    android:visibility="@{roundInProgress || winner!=null ? View.GONE : View.VISIBLE}" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/finish"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginHorizontal="20dp"
+                    android:text='@{"End game Winner "+winner.name+ "("+winner.scores+")"}'
+                    android:visibility="@{winner!=null ? View.VISIBLE : View.GONE}" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/show_history"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginHorizontal="20dp"
+                    android:gravity="center"
+                    android:text="@string/history"
+                    android:visibility="@{roundInProgress ? View.GONE : View.VISIBLE}" />
+            </LinearLayout>
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

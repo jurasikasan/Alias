@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Алиас</string>
+    <string name="players_amount">Количество игроков</string>
+    <string name="player">Игрок</string>
+    <string name="team">Команда</string>
+    <string name="teams_amount">Количество команд</string>
+    <string name="ok">ОК</string>
+    <string name="sec">сек</string>
+    <string name="ready">Старт</string>
+    <string name="history">История</string>
+    <string name="round">Раунд</string>
+    <string name="no_one">Никому</string>
+    <string name="pick_team">Выберите команду</string>
+</resources>

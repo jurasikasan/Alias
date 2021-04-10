@@ -1,0 +1,14 @@
+<resources>
+
+    <style name="Theme.Alias" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#FFFFEB3B</item>
+        <item name="colorSecondary">#FFFF9900</item>
+    </style>
+    <style name="Theme.Alias.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Alias.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar"/>
+
+</resources>

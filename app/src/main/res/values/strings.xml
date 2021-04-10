@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Alias</string>
+    <string name="players_amount">Players amount</string>
+    <string name="player">Player</string>
+    <string name="team">Team</string>
+    <string name="teams_amount">Teams amount</string>
+    <string name="ok">OK</string>
+    <string name="sec">sec</string>
+    <string name="up_arrow" translatable="false">⇧</string>
+    <string name="up_arrow_x3" translatable="false">⇧⇧⇧</string>
+    <string name="down_arrow" translatable="false">⇩</string>
+    <string name="down_arrow_x3" translatable="false">⇩⇩⇩</string>
+    <string name="equal" translatable="false">=</string>
+    <string name="ready">Ready</string>
+    <string name="history">History</string>
+    <string name="pick_team">Pick the team</string>
+    <string name="no_one">No one</string>
+    <string name="round">Round</string>
+</resources>
