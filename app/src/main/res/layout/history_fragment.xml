@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -28,10 +29,12 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/play"
+                    style="@style/Widget.App.PrimaryButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-                    android:text="@string/ok" />
+                    android:text="@string/ok"
+                    app:shapeAppearance="@style/ShapeAppearance.Alias.Button" />
 
             </RelativeLayout>
         </LinearLayout>

@@ -1,0 +1,41 @@
+<resources>
+
+    <style name="Theme.Alias" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/color_black</item>
+        <item name="colorOnPrimary">@color/color_gold</item>
+
+        <item name="android:colorBackground">@color/color_black</item>
+
+        <item name="colorSurface">@color/color_black</item>
+        <item name="colorOnSurface">@color/color_white</item>
+
+
+        <item name="colorSecondary">@color/color_gold</item>
+        <item name="colorAccent">@color/color_gold</item>
+
+        <item name="colorPrimaryDark">@color/color_grey</item>
+
+    </style>
+
+    <style name="Theme.Alias.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Alias.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
+
+    <style name="Widget.App.PrimaryButton" parent="Widget.MaterialComponents.Button">
+        <item name="materialThemeOverlay">@style/PrimaryButtonThemeOverlayDark</item>
+    </style>
+
+    <style name="PrimaryButtonThemeOverlayDark">
+        <item name="colorPrimary">@color/color_gold</item>
+        <item name="colorOnPrimary">@color/color_black</item>
+        <item name="colorAccent">@color/color_grey</item>
+    </style>
+
+
+    <style name="Widget.App.SecondaryButton" parent="Widget.MaterialComponents.Button"></style>
+
+
+</resources>

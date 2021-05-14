@@ -1,14 +1,48 @@
 <resources>
 
     <style name="Theme.Alias" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="colorPrimary">#FFFFEB3B</item>
-        <item name="colorSecondary">#FFFF9900</item>
+        <item name="colorPrimary">@color/color_white_dark</item>
+        <item name="colorOnPrimary">@color/color_black</item>
+
+        <item name="android:colorBackground">@color/color_white_dark</item>
+
+        <item name="colorSecondary">@color/color_gold</item>
+
+        <item name="colorPrimaryDark">@color/color_light_green</item>
+        <item name="colorAccent">@color/color_light_green</item>
+
+        <item name="colorSurface">@color/color_white</item>
+        <item name="colorOnSurface">@color/color_black</item>
     </style>
+
     <style name="Theme.Alias.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.Alias.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar"/>
+    <style name="Theme.Alias.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
+
+
+    <style name="Widget.App.PrimaryButton" parent="Widget.MaterialComponents.Button">
+        <item name="materialThemeOverlay">@style/PrimaryButtonThemeOverlayLight</item>
+    </style>
+
+    <style name="PrimaryButtonThemeOverlayLight">
+        <item name="colorPrimary">@color/color_light_green</item>
+        <item name="colorOnPrimary">@color/color_black</item>
+        <item name="colorAccent">@color/color_dark_green</item>
+    </style>
+
+
+    <style name="Widget.App.SecondaryButton" parent="Widget.MaterialComponents.Button">
+        <item name="materialThemeOverlay">@style/SecondaryButtonThemeOverlayLight</item>
+    </style>
+
+    <style name="SecondaryButtonThemeOverlayLight">
+        <item name="colorPrimary">@color/color_dark_green</item>
+        <item name="colorOnPrimary">@color/color_black</item>
+        <item name="colorAccent">@color/color_light_green</item>
+    </style>
+
 
 </resources>
