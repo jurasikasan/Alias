@@ -1,6 +1,10 @@
 package jurasikasan.alias
 
+import android.app.Dialog
+import android.content.DialogInterface
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import jurasikasan.alias.ui.main.MainFragment
 import jurasikasan.alias.ui.main.MainViewModel
@@ -23,5 +27,26 @@ class MainActivity : AppCompatActivityStreamMusic() {
                 .replace(R.id.container, MainFragment.newInstance())
                 .commitNow()
         }
+    }
+
+    class LeaveGameDialogFragment(
+        var okButtonListener: DialogInterface.OnClickListener
+    ) : DialogFragment() {
+        override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+            return activity?.let {
+                AlertDialog.Builder(it)
+                    .setTitle(resources.getString(R.string.leave_game_question))
+                    .setMessage(resources.getString(R.string.leave_game_warning))
+                    .setPositiveButton(resources.getString(R.string.ok), okButtonListener)
+                    .setNegativeButton(resources.getString(R.string.cancel), null)
+                    .create()
+            } ?: throw IllegalStateException("Activity cannot be null")
+        }
+    }
+
+    override fun onBackPressed() {
+        LeaveGameDialogFragment { _, _ ->
+            super.onBackPressed()
+        }.show(supportFragmentManager, "confirm_leave_game")
     }
 }

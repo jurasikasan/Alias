@@ -16,4 +16,7 @@
     <string name="pick_team">Pick the team</string>
     <string name="no_one">No one</string>
     <string name="round">Round</string>
+    <string name="leave_game_question">Leave game?</string>
+    <string name="leave_game_warning">Current game progress will be lost. Do you want to proceed?</string>
+    <string name="cancel">Cancel</string>
 </resources>

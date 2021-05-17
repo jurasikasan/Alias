@@ -12,4 +12,7 @@
     <string name="round">Раунд</string>
     <string name="no_one">Никому</string>
     <string name="pick_team">Выберите команду</string>
+    <string name="leave_game_question">Покинуть игру?</string>
+    <string name="leave_game_warning">"Текущий прогресс игры будет утрачен. Продолжить? "</string>
+    <string name="cancel">Отмена</string>
 </resources>
