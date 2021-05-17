@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Alias">
         <activity
+            android:name=".SettingsActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".NewGameSettingsActivity"
             android:screenOrientation="portrait">
             <intent-filter>

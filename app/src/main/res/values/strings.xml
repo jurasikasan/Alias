@@ -19,4 +19,6 @@
     <string name="leave_game_question">Leave game?</string>
     <string name="leave_game_warning">Current game progress will be lost. Do you want to proceed?</string>
     <string name="cancel">Cancel</string>
+    <string name="about_app_header">About app</string>
+    <string name="build_version">Build Version</string>
 </resources>

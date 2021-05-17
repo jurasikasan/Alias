@@ -15,4 +15,6 @@
     <string name="leave_game_question">Покинуть игру?</string>
     <string name="leave_game_warning">"Текущий прогресс игры будет утрачен. Продолжить? "</string>
     <string name="cancel">Отмена</string>
+    <string name="about_app_header">О приложении</string>
+    <string name="build_version">Версия сборки</string>
 </resources>

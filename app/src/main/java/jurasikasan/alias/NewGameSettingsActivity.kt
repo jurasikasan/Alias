@@ -81,5 +81,11 @@ class NewGameSettingsActivity : AppCompatActivityStreamMusic() {
                 }
             )
         }
+
+        binding.goToSettings.setOnClickListener{
+            startActivity(
+                Intent(this, SettingsActivity::class.java)
+            )
+        }
     }
 }
