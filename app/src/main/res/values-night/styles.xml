@@ -35,7 +35,9 @@
     </style>
 
 
-    <style name="Widget.App.SecondaryButton" parent="Widget.MaterialComponents.Button"></style>
+    <style name="Widget.App.SecondaryButton" parent="Widget.MaterialComponents.Button">
+        <!--  Stub, In dark theme default button styles are fine   -->
+    </style>
 
 
 </resources>
