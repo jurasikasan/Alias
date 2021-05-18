@@ -11,9 +11,15 @@ interface WordDao {
     @Query("SELECT * FROM words ORDER BY RANDOM() LIMIT 1")
     fun getNextWord(): Word
 
+    @Query("SELECT * FROM words")
+    fun getAllWords(): List<Word>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(words: List<Word>)
 
     @Update
     fun updateWords(vararg words: Word)
+
+    @Query("DELETE FROM words")
+    fun deleteAll()
 }

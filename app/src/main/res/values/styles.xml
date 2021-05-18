@@ -13,6 +13,19 @@
 
         <item name="colorSurface">@color/color_white</item>
         <item name="colorOnSurface">@color/color_black</item>
+
+        <item name="circularProgressIndicatorStyle">
+            @style/Widget.App.CircularProgressIndicatorLight
+        </item>
+    </style>
+
+    <style name="Widget.App.CircularProgressIndicatorLight" parent="Widget.MaterialComponents.CircularProgressIndicator">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.CircularProgressIndicatorLight
+        </item>
+    </style>
+
+    <style name="ThemeOverlay.App.CircularProgressIndicatorLight" parent="">
+        <item name="colorPrimary">@color/color_light_green</item>
     </style>
 
     <style name="Theme.Alias.NoActionBar">

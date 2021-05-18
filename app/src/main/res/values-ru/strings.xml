@@ -17,4 +17,12 @@
     <string name="cancel">Отмена</string>
     <string name="about_app_header">О приложении</string>
     <string name="build_version">Версия сборки</string>
+    <string name="vocabulary_header">Словарь</string>
+    <string name="import_vocabulary">Загрузить из файла</string>
+    <string name="export_vocabulary">Сохранить в файл</string>
+    <string name="read_db">Чтение базы данных</string>
+    <string name="write_file">Запись в файл</string>
+    <string name="done">Готово</string>
+    <string name="read_file">Чтение файла</string>
+    <string name="write_db">Запись в базу данных</string>
 </resources>

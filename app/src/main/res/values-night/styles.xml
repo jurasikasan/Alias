@@ -15,6 +15,18 @@
 
         <item name="colorPrimaryDark">@color/color_grey</item>
 
+        <item name="circularProgressIndicatorStyle">
+            @style/Widget.App.CircularProgressIndicatorDark
+        </item>
+    </style>
+
+    <style name="Widget.App.CircularProgressIndicatorDark" parent="Widget.MaterialComponents.CircularProgressIndicator">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.CircularProgressIndicatorDark
+        </item>
+    </style>
+
+    <style name="ThemeOverlay.App.CircularProgressIndicatorDark" parent="">
+        <item name="colorPrimary">@color/color_gold</item>
     </style>
 
     <style name="Theme.Alias.NoActionBar">

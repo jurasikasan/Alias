@@ -21,4 +21,12 @@
     <string name="cancel">Cancel</string>
     <string name="about_app_header">About app</string>
     <string name="build_version">Build Version</string>
+    <string name="vocabulary_header">Vocabulary</string>
+    <string name="export_vocabulary">Export to file</string>
+    <string name="import_vocabulary">Import from file</string>
+    <string name="read_db">Read DB</string>
+    <string name="write_file">Write file</string>
+    <string name="done">Done</string>
+    <string name="read_file">Read file</string>
+    <string name="write_db">Write to DB</string>
 </resources>
