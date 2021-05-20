@@ -9,6 +9,7 @@ data class Word(
     @PrimaryKey(autoGenerate = true) val id: Int,
     val value: String,
     val description: String,
+    var complexity: Int,
     var lastPlayed: Date?,
 ) {
     override fun toString() = value
