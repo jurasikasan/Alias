@@ -64,13 +64,13 @@ class MainFragment : Fragment() {
 
             return activity?.let {
                 val builder = AlertDialog.Builder(it)
-                builder.setTitle(word + " " + (if (success) "⇧" else "⇩") + " Pick the team")
+                builder.setTitle(word + " " + (if (success) "⇧" else "⇩") + " Pick the team") // TODO localization
                     .setItems(
                         cs,
                         listener
                     )
                     .setNegativeButton(
-                        "No one", cancelListener
+                        "No one", cancelListener // TODO localization
                     )
                 builder.create()
             } ?: throw IllegalStateException("Activity cannot be null")
