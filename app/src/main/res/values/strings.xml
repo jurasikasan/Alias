@@ -29,4 +29,7 @@
     <string name="done">Done</string>
     <string name="read_file">Read file</string>
     <string name="write_db">Write to DB</string>
+    <string name="played_words_ignore_days">Do not show words played in last days</string>
+    <string name="word_complexity">Words complexity</string>
+    <string name="words_amount">Words found</string>
 </resources>

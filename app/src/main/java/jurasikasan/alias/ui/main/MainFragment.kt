@@ -1,12 +1,12 @@
 package jurasikasan.alias.ui.main
 
 import android.app.Dialog
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,9 +34,11 @@ import java.util.*
 const val multiplier = 60
 const val roundTime: Long = multiplier * 1000L
 const val winWordsAmount: Int = multiplier
-const val ignorePlayedInterval: Long = 7 * 24 * 60 * 60 * 1000
 
 class MainFragment : Fragment() {
+    private var wordComplexityMin: Int = 0
+    private var wordComplexityMax: Int = 0
+    private var ignorePlayedInterval: Long = 0
 
     companion object {
         fun newInstance() = MainFragment()
@@ -175,6 +177,11 @@ class MainFragment : Fragment() {
         binding.finish.setOnClickListener {
             startActivity(Intent(activity, NewGameSettingsActivity::class.java).apply { })
         }
+        val sharedPref = requireActivity().getSharedPreferences("alias", Context.MODE_PRIVATE)
+        ignorePlayedInterval =
+            sharedPref.getFloat("playedWordsIgnoreDays", 0f).toLong() * MILLISECONDS_IN_DAY
+        wordComplexityMin = sharedPref.getFloat("wordComplexityMin", 0f).toInt()
+        wordComplexityMax = sharedPref.getFloat("wordComplexityMax", 0f).toInt()
     }
 
     private fun resetCard(cardContentLayout: MaterialCardView) {
@@ -192,7 +199,11 @@ class MainFragment : Fragment() {
     }
 
     private suspend fun getWord() = withContext(Dispatchers.Default) {
-        var word = db!!.wordDao().getNextWord(Date(Date().time - ignorePlayedInterval))
+        var word = db!!.wordDao().getNextWord(
+            Date(Date().time - ignorePlayedInterval),
+            wordComplexityMin,
+            wordComplexityMax
+        )
         if (word == null) {
             word = db!!.wordDao().getNextWord()
         }

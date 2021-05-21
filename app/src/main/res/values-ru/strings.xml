@@ -25,4 +25,7 @@
     <string name="done">Готово</string>
     <string name="read_file">Чтение файла</string>
     <string name="write_db">Запись в базу данных</string>
+    <string name="played_words_ignore_days">Не показывать слова сыгранные за последние дни</string>
+    <string name="word_complexity">Сложность слов</string>
+    <string name="words_amount">Найдено слов</string>
 </resources>

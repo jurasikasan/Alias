@@ -7,16 +7,7 @@
         android:layout_height="match_parent"
         tools:context=".NewGameSettingsActivity">
 
-        <com.google.android.material.button.MaterialButton
-            style="@style/Widget.App.Button.Button.IconOnly"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/go_to_settings"
-            android:background="@android:color/transparent"
-            android:padding="20dp"
-            app:icon="@drawable/ic_gear"/>
-
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -25,49 +16,156 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="left"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:labelFor="@id/players_amount"
-                    android:text="@string/players_amount" />
+                    android:gravity="left"
+                    android:orientation="vertical">
 
-                <Spinner
-                    android:id="@+id/players_amount"
-                    android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:labelFor="@id/played_words_ignore_days"
+                            android:text="@string/played_words_ignore_days" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:labelFor="@id/played_words_ignore_days"
+                            android:paddingHorizontal="5dp"
+                            android:text="@{String.valueOf(((Float)playedWordsIgnoreDays).intValue())}" />
+                    </LinearLayout>
+
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/played_words_ignore_days"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:stepSize="1"
+                        android:valueFrom="0"
+                        android:valueTo="100" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:spinnerMode="dialog" />
+                    android:gravity="left"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:labelFor="@id/word_complexity_range"
+                        android:text="@string/word_complexity" />
+
+                    <com.google.android.material.slider.RangeSlider
+                        android:id="@+id/word_complexity_range"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:stepSize="1"
+                        android:valueFrom="0"
+                        android:valueTo="100" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="30dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/words_amount" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="5dp"
+                        android:text="@{String.valueOf((Integer)wordsMatches)}" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:labelFor="@id/players_amount"
+                        android:text="@string/players_amount" />
+                    <Spinner
+                        android:id="@+id/players_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:spinnerMode="dialog" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:labelFor="@id/teams_amount"
+                        android:text="@string/teams_amount" />
+                    <Spinner
+                        android:id="@+id/teams_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:spinnerMode="dialog" />
+                </LinearLayout>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/go_to_settings"
+                style="@style/Widget.App.Button.Button.IconOnly"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="left"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:labelFor="@id/teams_amount"
-                    android:text="@string/teams_amount" />
-
-                <Spinner
-                    android:id="@+id/teams_amount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:spinnerMode="dialog" />
-            </LinearLayout>
+                android:layout_alignParentStart="true"
+                android:layout_gravity="start"
+                android:background="@android:color/transparent"
+                android:padding="20dp"
+                app:icon="@drawable/ic_gear" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/start"
                 style="@style/Widget.App.PrimaryButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
                 android:text="@string/ok"
                 app:shapeAppearance="@style/ShapeAppearance.Alias.Button" />
-        </LinearLayout>
+        </RelativeLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <data>
+
+        <variable
+            name="playedWordsIgnoreDays"
+            type="androidx.databinding.ObservableFloat" />
+
+        <variable
+            name="complexityMin"
+            type="androidx.databinding.ObservableFloat" />
+
+        <variable
+            name="complexityMax"
+            type="androidx.databinding.ObservableFloat" />
+
+        <variable
+            name="wordsMatches"
+            type="androidx.databinding.ObservableInt" />
+    </data>
 </layout>
