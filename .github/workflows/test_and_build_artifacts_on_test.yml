@@ -3,7 +3,7 @@ name: Test_and_build_artifacts_on_release
 on:
   push:
     branches:
-      - 'release'
+      - 'main'
 
 env:
   RELEASE_KEYSTORE_PASSWORD: ${{ secrets.RELEASE_KEYSTORE_PASSWORD }}
@@ -21,15 +21,15 @@ jobs:
       - name: Build release APK and AAB after test
         run: |
           ./gradlew test
-          ./gradlew assembleRelease
-          ./gradlew bundleRelease
+          ./gradlew assembleQa
+          ./gradlew bundleQa
       - name: Upload APK
         uses: actions/upload-artifact@v2
         with:
           name: app-release.apk
-          path: app/build/outputs/apk/release/app-release.apk
+          path: app/build/outputs/apk/release/app-test.apk
       - name: Upload AAB Bundle
         uses: actions/upload-artifact@v2
         with:
           name: app-release.aab
-          path: app/build/outputs/bundle/release/app-release.aab
+          path: app/build/outputs/bundle/release/app-test.aab

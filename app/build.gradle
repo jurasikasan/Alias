@@ -44,7 +44,7 @@ android {
             versionNameSuffix "-dev"
             signingConfig signingConfigs.debug
         }
-        test {
+        qa { // BuildType names cannot start with 'test'
             applicationIdSuffix ".test"
             versionNameSuffix "-test"
             signingConfig signingConfigs.release
