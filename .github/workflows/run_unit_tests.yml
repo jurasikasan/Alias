@@ -4,10 +4,12 @@ on:
   pull_request:
     branches:
     - 'main'
+    - 'test'
+    - 'release'
 
 jobs:
   Unit-test:
-    name: Run unit tests on PR in main
+    name: Run unit tests on PR
     runs-on: ubuntu-20.04
 
     steps:
