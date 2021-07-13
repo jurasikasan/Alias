@@ -21,13 +21,13 @@ android {
     }
     signingConfigs {
         debug {
-            keyAlias "debug_sign_key"
+            keyAlias "./debug_sign_key"
             storePassword System.getenv('DEBUG_KEYSTORE_PASSWORD')
             keyAlias System.getenv('DEBUG_SIGN_KEY_ALIAS')
             keyPassword System.getenv('DEBUG_SIGN_KEY_PASSWORD')
         }
         release {
-            keyAlias "release_sign_key"
+            keyAlias "./release_sign_key"
             storePassword System.getenv('RELEASE_KEYSTORE_PASSWORD')
             keyAlias System.getenv('RELEASE_SIGN_KEY_ALIAS')
             keyPassword System.getenv('RELEASE_SIGN_KEY_PASSWORD')
