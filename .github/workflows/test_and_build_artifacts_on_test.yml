@@ -26,10 +26,10 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v2
         with:
-          name: app-release.apk
-          path: app/build/outputs/apk/release/app-test.apk
+          name: app-test.apk
+          path: app/build/outputs/apk/qa/app-test.apk
       - name: Upload AAB Bundle
         uses: actions/upload-artifact@v2
         with:
-          name: app-release.aab
-          path: app/build/outputs/bundle/release/app-test.aab
+          name: app-test.aab
+          path: app/build/outputs/bundle/qa/app-test.aab
