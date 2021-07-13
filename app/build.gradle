@@ -19,8 +19,40 @@ android {
     applicationVariants.all { variant ->
         variant.resValue "string", "versionName", variant.versionName
     }
-    buildTypes {
+    signingConfigs {
+        debug {
+            keyAlias "debug_sign_key"
+            storePassword System.getenv('DEBUG_KEYSTORE_PASSWORD')
+            keyAlias System.getenv('DEBUG_SIGN_KEY_ALIAS')
+            keyPassword System.getenv('DEBUG_SIGN_KEY_PASSWORD')
+        }
         release {
+            keyAlias "release_sign_key"
+            storePassword System.getenv('RELEASE_KEYSTORE_PASSWORD')
+            keyAlias System.getenv('RELEASE_SIGN_KEY_ALIAS')
+            keyPassword System.getenv('RELEASE_SIGN_KEY_PASSWORD')
+        }
+    }
+    buildTypes {
+        debug {
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-debug"
+        }
+        dev {
+            initWith debug
+            applicationIdSuffix ".dev"
+            versionNameSuffix "-dev"
+            signingConfig signingConfigs.debug
+        }
+        test {
+            applicationIdSuffix ".test"
+            versionNameSuffix "-test"
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
