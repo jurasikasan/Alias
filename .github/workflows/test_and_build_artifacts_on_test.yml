@@ -1,9 +1,9 @@
-name: Test_and_build_artifacts_on_release
+name: Test_and_build_artifacts_on_test
 
 on:
   push:
     branches:
-      - 'main'
+      - 'test'
 
 env:
   RELEASE_KEYSTORE_PASSWORD: ${{ secrets.RELEASE_KEYSTORE_PASSWORD }}
