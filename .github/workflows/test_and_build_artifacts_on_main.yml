@@ -27,11 +27,11 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: app-dev.apk
-          path: app/build/outputs/apk/dev/app-dev.apk
+          path: app/build/outputs/apk/inDev/dev/app-inDev-dev.apk
           retention-days: 1
       - name: Upload AAB Bundle
         uses: actions/upload-artifact@v2
         with:
           name: app-dev.aab
-          path: app/build/outputs/bundle/dev/app-dev.aab
+          path: app/build/outputs/bundle/inDev/dev/app-inDev-dev.aab
           retention-days: 1

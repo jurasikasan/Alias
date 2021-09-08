@@ -27,9 +27,9 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: app-test.apk
-          path: app/build/outputs/apk/qa/app-qa.apk
+          path: app/build/outputs/apk/inDev/qa/app-inDev-qa.apk
       - name: Upload AAB Bundle
         uses: actions/upload-artifact@v2
         with:
           name: app-test.aab
-          path: app/build/outputs/bundle/qa/app-qa.aab
+          path: app/build/outputs/bundle/inDev/qa/app-inDev-qa.aab

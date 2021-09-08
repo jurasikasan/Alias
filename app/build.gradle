@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply from: "$project.rootDir/script-git-version.gradle"
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -11,9 +12,6 @@ android {
         applicationId "jurasikasan.alias"
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
-        versionCode 1
-        versionName "0.1"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     applicationVariants.all { variant ->
@@ -31,6 +29,29 @@ android {
             storePassword System.getenv('RELEASE_KEYSTORE_PASSWORD')
             keyAlias System.getenv('RELEASE_SIGN_KEY_ALIAS')
             keyPassword System.getenv('RELEASE_SIGN_KEY_PASSWORD')
+        }
+    }
+    variantFilter { variant ->
+        def names = variant.flavors*.name
+        def devVersion = (variant.buildType.name == "debug"
+                || variant.buildType.name == "dev"
+                || variant.buildType.name == "qa")
+        if (names.contains("inDev") && !devVersion) {
+            setIgnore(true)
+        }
+        if (!names.contains("inDev") && devVersion) {
+            setIgnore(true)
+        }
+    }
+    flavorDimensions "version"
+    productFlavors {
+        inDev {
+            versionCode versionCodeDev
+            versionName versionNameDev
+        }
+        prod {
+            versionCode versionCodeProd
+            versionName versionNameProd
         }
     }
     buildTypes {
