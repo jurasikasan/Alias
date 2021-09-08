@@ -1,0 +1,81 @@
+def getVersionCodeDev = { ->
+    try {
+        def code = new ByteArrayOutputStream()
+        exec {
+            commandLine 'git', 'show', '-s', '--format=%ct'
+            standardOutput = code
+        }
+        return Long.parseLong(code.toString().trim()).intValue()
+    }
+    catch (ignored) {
+        return -1
+    }
+}
+
+def getVersionCodeProd = { ->
+    try {
+        def code = new ByteArrayOutputStream()
+        exec {
+            commandLine 'git', 'tag', '--list'
+            standardOutput = code
+        }
+        return code.toString().split("\n").size()
+    }
+    catch (ignored) {
+        return -1
+    }
+}
+
+def getVersionNameDev = { ->
+    try {
+        def stdout = new ByteArrayOutputStream()
+        exec {
+            commandLine 'git', 'rev-parse', '--abbrev-ref', 'HEAD'
+            standardOutput = stdout
+        }
+        def version = stdout.toString().trim()
+        stdout = new ByteArrayOutputStream()
+        exec {
+            commandLine 'git', 'show', '-s', '--format=%ct-%h'
+            standardOutput = stdout
+        }
+        version = version + "-" + stdout.toString().trim()
+        stdout = new ByteArrayOutputStream()
+        exec {
+            commandLine 'git', 'log', '-1', '--pretty=%B'
+            standardOutput = stdout
+        }
+        def comment = stdout.toString().trim()
+        if (comment.contains("Merge pull request") && comment.contains("jurasikasan/")) {
+            def branch = comment.split("jurasikasan/")[1].split("\n")[0]
+
+            version = version + branch
+        }
+        return version
+
+    }
+    catch (ignored) {
+        return null
+    }
+}
+
+def getVersionNameProd = { ->
+    try {
+        def stdout = new ByteArrayOutputStream()
+        exec {
+            commandLine 'git', 'describe', '--tags', '--dirty'
+            standardOutput = stdout
+        }
+        return stdout.toString().trim()
+    }
+    catch (ignored) {
+        return ""
+    }
+}
+
+ext {
+    versionCodeDev = getVersionCodeDev()
+    versionCodeProd = getVersionCodeProd()
+    versionNameDev = getVersionNameDev()
+    versionNameProd = getVersionNameProd()
+}
